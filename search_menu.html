@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<title>Lego DB Finder</title>
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700" rel="stylesheet">
+		<link href="animation.css" rel="stylesheet" type="text/css"/>
+		<link href="style.css" rel="stylesheet" type="text/css"/>
+		<link href="style_search_parts.css" rel="stylesheet" type="text/css"/>
+		<script src="script.js"></script>
+		<script src="searchtab.js"></script>
+		<script src="validator.js"></script>
+		<script src="validator_button.js"></script>
+		<script src="page_nav_responsivness.js"></script>
+		<meta charset="utf-8">
+		<meta name="theme-color" content="#1A237E">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	</head>
+	<body onload="tabColor(), toggleButtons(), changeNav(), focusDependingOnPath()">
+		<div class="colContainer">
+			<div id="startContainerBG">
+			</div>
+			<div id="startContainer">
+				<h1 id="startHeader">welcome to <span onclick="reloadPage()">Lego Database Finder</span></h1>
+				<div id="searchBarContainer">
+					<div id="searchTabContainer">
+						<div id="searchParts" onclick="changeTab(this.id)">
+							<h3>Parts</h3>
+						</div>
+						<div id="searchSets" onclick="changeTab(this.id)">
+							<h3>Sets</h3>
+						</div>
+						<div id="aboutTab">
+							<h4 onclick="loadAbout()">About</h4>
+						</div>
+					</div>
+					<form action="choose_part.php" method="post">
+						<h5 class="alertWarning">Search value must be at least 3 characters</h5>
+						<input id="keyword" type="text" name="keyword" onkeyup="runFunction(), toggleButtons(), enterKeyActivation(event)" autocomplete="off">
+						<div id="searchButtonContainer">
+							<input id="searchButton" type="submit" value="search" name="search">
+							<div id="warningButton" onclick="warningButtonClick()">
+							</div>
+						</div>
+						<p>Search the database via name or id</p>
+					</form>
+				</div>
+			</div>

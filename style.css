@@ -1,0 +1,710 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #F4F4F4;
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+}
+a,p,h1,h2,h3,h4,h5,input,li {
+  font-family: 'open sans', arial;
+  color: #1d1d1d;
+}
+.colContainer{
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  width: 100%;
+}
+#startContainer {
+  display: flex;
+  flex-flow: column;
+  justify-content: space-around;
+  align-items: center;
+
+  height: 600px;
+  width:100%;
+}
+#startContainerBG {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  position: absolute;
+  top: 0;
+  left: 5%; /*fix for firefox*/
+  z-index: -1;
+
+  background-color: #3F51B5;
+  background-image: url("background_image.jpg");
+  background-size: cover;
+  background-position: 0 -100px;
+  background-repeat: no-repeat;
+  filter:brightness(0.6);
+  width: 90%;
+  height: 600px;
+}
+#startHeader {
+  font-family: 'open sans';
+  font-weight: 300;
+  font-size: 2vw;
+  text-align: center;
+  color: whitesmoke;
+  line-height: 50px;
+}
+#startHeader span{
+  display: block;
+  font-size: 4.8vw;
+  font-weight: 500;
+  cursor: pointer;
+}
+#searchBarContainer {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+
+  width: 70%;
+  max-width: 900px;
+  height: 300px;
+  border-radius: 1px;
+
+  background: #EEEEEE;
+}
+#searchTabContainer{
+  display: flex;
+  flex-flow: row;
+  background-color: #1A237E;
+  border-bottom: 4px solid #3F51B5;
+
+  width: 100%;
+  padding-top: 10px;
+
+  align-self: flex-start; /*aligns the tab container to the top of parent element*/
+}
+#searchTabContainer div{
+  padding: 5px 20px;
+  border-radius: 2px 2px 0 0;
+  transition: ease-in-out 0.15s background-color;
+}
+#searchTabContainer::before{
+  width: 10px;
+  content: "";
+  background-color: #1A237E;
+}
+#searchTabContainer::after{
+  width: 10px;
+  content: "";
+  background-color: #1A237E;
+
+}
+#searchSets{
+  background-color: #1A237E; /*selected tab gets set by js. Thus both tabs are set to unseclected color here, in css*/
+}
+#searchParts{
+  background-color: #1A237E; /*selected tab gets set by js. Thus both tabs are set to unseclected color here, in css*/
+}
+#searchTabContainer div h3{
+  font-weight: 300;
+  font-size: 20px;
+  padding: 0;
+  width: 100%;
+  margin: 0;
+}
+#searchTabContainer div h3{
+  color: whitesmoke;
+}
+#searchTabContainer div:hover{
+  cursor: pointer;
+}
+#aboutTab {
+  margin-left: auto;
+}
+#aboutTab h4{
+  font-weight: 500;
+  font-size: 14px;
+  padding: 0;
+  width: 100%;
+  margin: 0;
+  margin-top: 5px; /* Dirty fix to align text within container. The text IS aligned with the tabtext however it is interpeted as not cuz visual illusion*/
+  color: #7986CB;
+  width: 100%;
+
+  transition: color ease-in-out 0.15s;
+}
+#aboutTab h4:hover{
+  color: whitesmoke;
+}
+#searchBarContainer form{
+  width: 100%;
+  text-align: center;
+}
+#searchBarContainer input[type=text]{
+  width: calc(60% - 20px);
+  max-width: 700px;
+  height: 42px;
+  padding: 0 10px;
+  border: none;
+  border-radius: 4px 0px 0px 4px;
+  font-size: 18px;
+  background-color: rgba(255, 255, 255, 0.9);
+  box-shadow: 0px 0px 3px whitesmoke;
+  margin-top: 5px;
+}
+#searchBarContainer input[type=submit]{
+  /*fix for safari mobile standard button css */
+  -webkit-appearance: none;
+
+  width: 100%;
+  max-width: 70px;
+  border: none;
+  height: 42px;
+  padding: 0;
+  border-radius: 0px 4px 4px 0px;
+  background-color: #4CAF50;
+
+  color: whitesmoke;
+  font-size: 18px;
+  font-weight: 300;
+  transition: linear 0.1s color, background-color;
+}
+#searchBarContainer input[type=submit]:hover{
+  background-color: #43A047;
+  color: #1d1d1d;
+  cursor: pointer;
+}
+#searchBarContainer p{
+  font-size: 14px;
+  color: #1d1d1d;
+}
+#searchButtonContainer {
+  width: 10%;
+  max-width: 70px;
+  display: inline-block;
+  position: relative;
+}
+#warningButton {
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 0px 4px 4px 0px;
+  opacity: 0;
+
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+}
+.alertWarning{
+  margin: -42px auto 0 auto;
+  width: calc(70% - 15px); /* attempt at using searchbar's and submit's button width to make this element just as wide. doesn't really work atm*/
+  padding: 18px 0;
+  max-width: 790px;
+  border-radius: 2px;
+  text-align: left;
+  line-height: 0;
+  opacity: 0;
+
+  color: #772929;
+  background: linear-gradient(to bottom, #f25757, #d64d4d);
+}
+.alertWarning::before{
+  content: "!";
+  background-color: #af3d3d;
+  margin: 0 5px 0 0;
+  padding: 7px 10px;
+  font-size: 20px;
+  line-height: 0.3;
+}
+#itemContainer{
+  width: 100%;
+}
+
+/* Error message */
+#resultError{
+  width: calc(90% - 4% - 2px);
+  margin: 2% auto 0 auto;
+  padding: 2%;
+
+  border: 1px solid #eaeaea;
+  border-bottom: 3px solid #eaeaea;
+  border-radius: 1px;
+
+  background-color: white;
+}
+.wrongSearch{
+  font-size: 2vw;
+}
+.wrongSearch span{
+  font-weight: 700;
+}
+.wrongSearchHeader{
+  font-size: 1.4vw;
+  margin: 0 auto;
+  padding: 0;
+}
+#resultError li span{
+  font-style: italic;
+}
+
+/*sort form*/
+#allParts form select{
+  /*fix for standard button css */
+  -moz-appearance:none; /* Firefox */
+  -webkit-appearance:none; /* Safari and Chrome */
+
+  border: none;
+  background: white url('arrow_dwn.svg') no-repeat 20px/20px;
+  background-position: 100% 50%;
+  padding: 8px;
+  padding-right: 28px; /*fix for arrow icon*/
+  border-radius: 1px;
+  border: 1px solid #F4F4F4;
+  outline: none;
+  color: #1d1d1d;
+  cursor: pointer;
+  transition: linear 0.1s border, border-radius;
+}
+#allParts form select:hover{
+  border-radius: 0px;
+  border: 1px solid #3F51B5;
+}
+ #allParts form input{
+   /*fix for safari mobile standard button css */
+   -webkit-appearance: none;
+
+   padding: 8px;
+   background-color: #303F9F;
+   border: none;
+   color: white;
+   border-radius: 1px;
+   cursor: pointer;
+   transition: linear 0.1s color, background-color;
+ }
+ #allParts form input:hover{
+   background-color: #3F51B5;
+   color: #1d1d1d;
+ }
+ #allParts option{
+   color: #1d1d1d;
+ }
+
+
+
+@media screen and (min-width: 1600px) {
+  #startHeader span{
+    font-size: 70px;
+  }
+  #startContainerBG{
+    width: 1500px;
+    left: calc(50% - 800px);
+  }
+  #colContainer{
+    width: 1600px;
+  }
+}
+
+@media screen and (min-width: 1207px) {
+  #startHeader span{
+    margin-top: 4%;
+  }
+}
+@media screen and (max-width: 1200px) {
+
+  #startContainerBG {
+    height: 45vw;
+  }
+  #startContainer {
+    height: 45vw;
+  }
+  #startContainer {
+    justify-content: center;
+  }
+  #startHeader{
+    font-size: 1.7vw;
+    margin-bottom: 2%;
+  }
+  #startHeader span{
+    font-size: 4.7vw;
+    margin-bottom: 2%;
+  }
+  #searchBarContainer{
+    height: 50%;
+  }
+  #searchTabContainer div{
+    padding: 5px 1vw;
+  }
+  #searchTabContainer div h3{
+    font-size: 16px;
+  }
+  #searchBarContainer input[type=text] {
+    font-size: 1.7vw;
+  }
+  #searchBarContainer input[type=submit] {
+    font-size: 1.7vw;
+  }
+  #searchBarContainer p{
+    font-size: 1.4vw;
+  }
+
+}
+
+@media screen and (max-width: 990px) {
+
+  a,p,h1,h2,h3,h4,h5,input {
+    font-size: 1.5vw;
+  }
+  #startHeader{
+  }
+  #startHeader span{
+    margin-top: -10px;
+    line-height: 50px;
+  }
+  #searchTabContainer div{
+    padding: 2px 1vw;
+  }
+  #searchBarContainer{
+    align-content: flex-start;
+    width: 80%;
+  }
+  #searchBarContainer form{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+
+    margin-top: 1%;
+  }
+  #searchBarContainer input[type=text]{
+    font-size: 2vw;
+    margin-top: 4.4vw;
+
+  }
+  #searchBarContainer input[type=submit]{
+    font-size: 2vw;
+
+  }
+  #searchButtonContainer{
+    margin-top: 4.4vw; /* fix for alignmet due to enabling flex*/
+    margin-left: 1%;
+  }
+  #searchBarContainer p{
+    width: 100%;
+  }
+  .alertWarning{
+    padding: 2vw 0;
+    height: 0;
+    z-index: 10;
+    font-size: 1.4vw;
+    margin: 0 auto -7vw auto;
+
+  }
+  .alertWarning::before{
+    padding: 0.7vw 10px;
+    font-size: 1.8vw;
+    line-height: 0.1vw;
+  }
+  .wrongSearch{
+      font-size: 2vw;
+  }
+  .wrongSearchHeader{
+      font-size: 1.8vw;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  a,p,h1,h2,h3,h4,h5,input,li {
+    font-size: 1.8vw;
+  }
+  #startContainerBG{
+    width: 100%;
+    height: 40vw;
+    left: 0;
+  }
+  #startContainer{
+    justify-content: center;
+    height: 40vw;
+  }
+  #startHeader{
+    color: rgba(255, 0, 0, 0);
+    line-height: 0;
+    align-self: flex-start;
+    margin-left: 7.5vw;
+  }
+  #startHeader span{
+    color: whitesmoke;
+  }
+  #searchBarContainer{
+    width: 85%;
+    height: 70%;
+  }
+  #searchBarContainer form{
+    margin-top: 2%;
+  }
+  .alertWarning{
+      font-size: 1.7vw;
+  }#searchBarContainer input[type=text]{
+    font-size: 2vw;
+    margin-top: 5vw;
+
+  }
+  #searchBarContainer input[type=submit]{
+    font-size: 2vw;
+
+  }
+  #searchButtonContainer{
+      margin-top: 5vw; /* fix for alignmet due to enabling flex*/
+      margin-left: 1%;
+  }
+  #searchBarContainer p{
+    font-size: 2.2vw;
+  }
+  .wrongSearchHeader{
+      font-size: 2vw;
+  }
+}
+
+
+@media screen and (max-width: 700px) {
+
+  a,p,h1,h2,h3,h4,h5,input,li {
+    font-size: 2vw;
+  }
+  #startContainerBG, #startContainer{
+    height: 50vw;
+  }
+  #searchBarContainer{
+    height: 70%;
+    width: 90%;
+  }
+  #startHeader{
+    margin-left: 5%;
+  }
+  #searchBarContainer input[type=text]{
+    height: 40%;
+    width: 80%;
+    margin-top: 6vw;
+    font-size: 2.3vw;
+  }
+  #searchButtonContainer{
+    margin-top: 6vw;
+    height: 40%;
+    width: 15%;
+  }
+  #searchBarContainer input[type=submit]{
+    font-size: 2.3vw;
+    height: 100%;
+  }
+  .alertWarning{
+    font-size: 2vw;
+    width: 90%;
+  }
+  .wrongSearch{
+      font-size: 2.4vw;
+  }
+  .wrongSearchHeader{
+      font-size: 2vw;
+  }
+}
+@media screen and (max-width: 600px) {
+  a,p,h1,h2,h3,h4,h5,input,li {
+    font-size: 2vw;
+  }
+  #startContainerBG{
+    background-position: 0 0;
+  }
+  #searchTabContainer{
+    padding-top: 0;
+  }
+  #searchTabContainer div{
+    border-radius: 0;
+    padding: 4px 1.5vw;
+  }
+  #searchBarContainer input[type=text]{
+    height: 40%;
+    margin-top: 6vw;
+    font-size: 2.8vw;
+  }
+  #searchButtonContainer{
+    height: 40%;
+    width: 13%;
+    margin-top: 6vw;
+  }
+  #searchBarContainer input[type=text]{
+    width: 77%;
+  }
+  #searchBarContainer input[type=submit]{
+    font-size: 2.8vw;
+  }
+  #searchBarContainer p{
+    font-size: 2.6vw;
+  }
+  .alertWarning{
+    width: 90%;
+    height: 0.6vw;
+    line-height: 0.7vw;
+    font-size: 2.4vw;
+  }
+  .alertWarning::before{
+    font-size: 2.2vw;
+    line-height: 0.1vw;
+  }
+  .wrongSearch{
+      font-size: 2.8vw;
+  }
+  .wrongSearchHeader{
+      font-size: 2.2vw;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  a,p,h1,h2,h3,h4,h5,input,li {
+    font-size: 2.4vw;
+  }
+  #startHeader span{
+    margin: 0;
+    font-size: 6vw;
+  }
+  #startContainerBG, #startContainer{
+    height: 56vw;
+  }
+  #searchBarContainer input[type=text]{
+    height: 40%;
+    margin-top: 6vw;
+    font-size: 2.7vw;
+  }
+  #searchBarContainer input[type=submit]{
+    font-size: 2.7vw;
+  }
+  #searchButtonContainer{
+    margin-top: 6vw;
+    height: 40%;
+  }
+  #searchBarContainer p{
+    font-size: 2.6vw;
+  }
+  .wrongSearch{
+      font-size: 3vw;
+  }
+  .wrongSearchHeader{
+      font-size: 2.6vw;
+  }
+}
+@media screen and (max-width: 440px) {
+  a,p,h1,h2,h3,h4,h5,input,li {
+    font-size: 2.8vw;
+  }
+  #startHeader{
+    margin-left: 2%;
+  }
+  #startHeader span{
+    margin: 0;
+  }
+  #startContainerBG, #startContainer{
+    height: 57vw;
+    justify-content: flex-start;
+  }
+  #searchBarContainer{
+    width: 96%;
+  }
+  .alertWarning{
+    font-size: 3vw;
+    height: 2.5vw;
+    line-height: 3.5vw;
+  }
+  .alertWarning::before{
+    font-size: 3.5vw;
+  }
+  #searchBarContainer form{
+    margin-top: 2.5%;
+  }
+  #searchBarContainer input[type=text]{
+    margin-top: 9.4vw;
+    font-size: 3.3vw;
+  }
+  #searchBarContainer input[type=submit]{
+    font-size: 3.3vw;
+  }
+  #searchButtonContainer{
+    margin-top: 9.4vw;
+  }
+  .wrongSearch{
+      font-size: 3.6vw;
+  }
+  .wrongSearchHeader{
+      font-size: 3.2vw;
+  }
+
+}
+/*IPHONE 6/7 RESOLUTION*/
+@media screen and (max-width: 375px) {
+  a,p,h1,h2,h3,h4,h5,input,li {
+    font-size: 3vw;
+  }
+  #startHeader{
+    margin: 0.5vw 0 0.5vw 2%;
+  }
+  #startHeader span{
+    font-size: 6vw;
+  }
+  #startContainerBG, #startContainer{
+    height: 68vw;
+  }
+  #searchBarContainer{
+    height: 76%;
+  }
+  #searchBarContainer p{
+    font-size: 3.5vw;
+  }
+  .alertWarning{
+    line-height: 3.4vw;
+  }
+  #searchBarContainer form{
+    margin-top: 2.5%;
+  }
+  #searchBarContainer input[type=text]{
+    margin-top: 9.4vw;
+    font-size: 3.6vw;
+  }
+  #searchBarContainer input[type=submit]{
+    font-size: 3.6vw;
+  }
+  #searchButtonContainer{
+    margin-top: 9.4vw;
+  }
+  .wrongSearch{
+      font-size: 4vw;
+  }
+  .wrongSearchHeader{
+      font-size: 3.2vw;
+  }
+}
+
+@media screen and (max-width: 340px) {
+  a,p,h1,h2,h3,h4,h5,input,li, #searchBarContainer p {
+    font-size: 3.6vw;
+  }
+  #startContainerBG, #startContainer{
+    height: 70vw;
+  }
+  #searchBarContainer{
+    margin-bottom: 1.2vw;
+  }
+  #searchBarContainer input[type=text], #searchBarContainer input[type=submit]{
+    font-size: 3.8vw;
+  }
+  .wrongSearch{
+      font-size: 4.6vw;
+  }
+  .wrongSearchHeader{
+      font-size: 4vw;
+  }
+}
+
+.about {
+	width: 90%;
+	background-color: white;
+	margin: 30px 0;
+}
+
+.aboutHeader, .aboutText {
+	margin: 20px;
+}

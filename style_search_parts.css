@@ -1,0 +1,346 @@
+.itemContainer {
+	font-family: 'open sans';
+	width: 100%;
+}
+#amountParts{
+	font-size: 3vw;
+	font-weight: 100;
+	margin: 1vw 0;
+	text-align: center;
+}
+#amountParts span{
+	font-weight: 500;
+}
+#allParts {
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-between;
+	align-content: space-between;
+	max-width: 70%;
+	margin: auto;
+}
+/* CSS FOR SHOWING A SINGLE ListItem*/
+#legoItem{
+	max-width: 70%;
+	min-width: 700px;
+	margin: 50px auto 0 auto;
+	display: flex;
+	flex-flow: row;
+	align-items: center;
+}
+.legoItemImgContainer{
+	width: 25%;
+	margin-right: 60px;
+}
+.legoItemImgContainer img {
+	border: 5px solid white;
+	border-radius: 1px;
+	width: 100%;
+	height: auto;
+}
+.infoText {
+	margin-bottom: 40px;
+}
+.legoName{
+	font-size: 25px;
+	margin: 0;
+}
+.legoID{
+	margin: 5px 0 0 0;
+}
+.legoID span, .infoText span{
+	font-weight: 700;
+}
+.legoPart{
+	padding: 0px 0;
+	width: 100%;
+	min-width: 500px;
+	margin: 5px 0;
+	display: flex;
+	align-items: center;
+
+	background-color: white;
+	border: 1px solid #eaeaea;
+}
+.imgContainer{
+	background-color: #3F51B5;
+	height: 100%;
+	text-align: center;
+}
+.imgContainer img{
+	margin: auto;
+	height: auto;
+	max-width: 100%;
+}
+.legoPart p{
+	margin: 0;
+}
+.legoPart p span{
+	font-size: 15px;
+	font-weight: 700;
+}
+
+.legoPartTitle {
+	font-size: 20px;
+	margin: 10px 0 5px 0;
+	text-decoration: none;
+	color: #1d1d1d;
+}
+.legoPartId{
+	font-size: 12px;
+	margin: 0;
+	color: #565656;
+}
+#ListItemParts{
+	font-size: 3vw;
+	font-weight: 100;
+	width: calc(70% - 12px);
+	margin: 0.5vw auto;
+	color: #1d1d1d;
+	padding: 10px 6px;
+	border-radius: 2px;
+}
+
+/*CSS FOR DISPLAYING A LIST OF ListItemS*/
+.legoListItem{
+	display: block;
+	width: 100%;
+	margin: 10px 0;
+	padding: 0;
+	text-decoration: none;
+
+	background-color: white;
+	border: 1px solid #eaeaea;
+	border-bottom: 3px solid #eaeaea;
+	transition: 0.05s ease-in-out border;
+}
+.legoListItem:hover{
+	border-bottom: 3px solid #1A237E;
+}
+.legoListItem div:first-child{
+	height: 100%;
+	display: flex;
+	flex-flow: row;
+	align-items: center;
+}
+.legoListItem div{
+	padding:  5px 0;
+}
+.legoListItem div img{
+	margin-right: 20px;
+	padding: 3px;
+}
+.legoListItemTitle{
+	font-size: 18px;
+	margin: 0;
+	padding: 0;
+}
+.legoListItem p{
+	color: #1d1d1d;
+	margin: 5px 0 0 0;
+}
+.legoListItemId{
+	margin: 5px 0 0 0;
+	padding: 0;
+	font-size: 14px;
+}
+.legoListItemColor{
+	margin: 5px 0 0 0;
+	padding: 0;
+	font-size: 14px;
+}
+.legoListItem p span{
+	font-weight: 700;
+}
+
+#allListItems {
+	display: flex;
+	flex-flow: row wrap;
+}
+
+@media screen and (max-width: 1500px) {
+
+	#amountParts, #ListItemParts{
+		margin: 2vw auto;
+		font-size: 3.5vw;
+	}
+}
+
+
+@media screen and (max-width: 990px) {
+	#legoItem{
+		margin-top: 5vw;
+	}
+	#amountParts, #ListItemParts{
+		font-size: 4vw;
+	}
+	#legoItem{
+		min-width: inherit;
+	}
+	.legoItemImgContainer{
+		width: 30%;
+		margin-right: 5%;
+	}
+	.legoName{
+		font-size: 3vw;
+	}
+	.legoID{
+		font-size: 1.7vw;
+	}
+	#ListItemParts{
+		font-size: 3.2vw;
+		margin: 0.7vw auto;
+	}
+	.legoListItemTitle{
+		font-size: 1.7vw;
+	}
+	.legoListItemId, .legoListItemColor{
+		font-size: 1.5vw;
+	}
+
+}
+@media screen and (max-width: 800px) {
+
+	#amountParts, #ListItemParts{
+		text-align: left;
+		margin-left: 5%;
+		font-size: 4.1vw;
+	}
+	#legoItem{
+		width: 90%;
+		max-width: none;
+	}
+	#ListItemParts{
+		width: calc(90% - 12px);
+	}
+	#allParts{
+		width: 90%;
+		max-width: none;
+	}
+
+	.legoName{
+		font-size: 3vw;
+	}
+	.legoID{
+		font-size: 1.7vw;
+	}
+	.legoListItemTitle{
+		font-size: 1.9vw;
+	}
+	.legoListItemId, .legoListItemColor{
+		font-size: 1.8vw;
+	}
+	.infoText{
+		margin-bottom: 0;
+	}
+
+}
+
+@media screen and (max-width: 700px) {
+	#amountParts, #ListItemParts{
+		font-size: 4.5vw;
+	}
+	.legoName{
+		font-size: 3vw;
+	}
+	.legoListItemTitle, .legoID{
+		font-size: 2.1vw;
+	}
+	.legoListItemId, .legoListItemColor{
+		font-size: 2vw;
+	}
+}
+
+@media screen and (max-width: 580px) {
+	#amountParts, #ListItemParts{
+		font-size: 5vw;
+	}
+	#legoItem{
+		margin-top: 4vw;
+	}
+	.legoName{
+		font-size: 3.2vw;
+	}
+	.legoListItemTitle, .legoID{
+		font-size: 2.5vw;
+	}
+	.legoListItemId, .legoListItemColor{
+		font-size: 2.3vw;
+	}
+	.legoListItem{
+		margin: 5px 0;
+	}
+}
+/*for page navigation changes*/
+@media screen and (max-width: 520px) {
+	.pageListButton a{
+		width: 15vw;
+		text-align: center;
+	}
+}
+@media screen and (max-width: 440px) {
+	.legoName{
+		font-size: 3.8vw;
+	}
+	.legoListItemTitle, .legoID{
+		font-size: 3.2vw;
+	}
+	.legoListItemId, .legoListItemColor{
+		font-size: 2.8vw;
+	}
+}
+@media screen and (max-width: 375px) {
+	#allParts{
+		width: 96%;
+	}
+	#amountParts{
+		margin-left: 2%;
+	}
+	.legoListItem{
+		margin: 3px 0;
+	}
+	.legoListItemTitle{
+		font-size: 3.6vw;
+	}
+	.legoListItemId, .legoListItemColor{
+		font-size: 3.4vw;
+	}
+}
+@media screen and (max-width: 340px) {
+	.legoName{
+		font-size: 4.5vw;
+	}
+	.legoListItemTitle, .legoID{
+		font-size: 4vw;
+	}
+	.legoListItemId, .legoListItemColor{
+		font-size: 3.6vw;
+	}
+}
+/*CSS FOR PAGE NAVIGATION MENY*/
+#pageMeny {
+	margin: 0 auto;
+	width: fit-content;
+	text-align: center;
+}
+ul.pageNavigation {
+	display: inline-block;
+	padding: 0;
+	margin-bottom: 50px;
+}
+ul.pageNavigation li {
+	display: inline;
+}
+ul.pageNavigation li a, .pageListButton a{
+	background-color: white;
+    color: black;
+    float: left;
+    padding: 4px 8px;
+    text-decoration: none;
+    transition: background-color .3s;
+    border: 1px solid #ddd;
+    margin: 2px 2px;
+}
+ul.pageNavigation li a:hover {
+	background-color: #ddd;
+}
